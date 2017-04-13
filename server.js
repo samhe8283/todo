@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyparser =require('body-parser');
+var _ = require('underscore');
+
 var PORT = process.env.PORT || 3000;
 
 var todos=[
@@ -20,12 +22,8 @@ app.get('/todos',function(req,res){
 
 app.get('/todos/:id',function(req,res){
    var todoId = parseInt(req.params.id,10);
-    var matchtodo;
-    todos.forEach(function(todo){
-        if(todoId === todo.id)
-            {
-                matchtodo=todo;
-            }});
+    var matchtodo = _.findWhere(todos,{id:todoId});
+   
     if(matchtodo){
         res.json(matchtodo)
     }else{
