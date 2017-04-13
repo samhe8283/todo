@@ -39,7 +39,7 @@ app.get('/todos/:id',function(req,res){
     if(matchtodo){
         res.json(matchtodo)
     }else{
-        res.status(404)
+        res.status(404).send();
     }
     
 })
