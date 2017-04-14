@@ -36,6 +36,10 @@ app.get('/todos/:id',function(req,res){
 
 app.post('/todos',function(req,res){
     var body=req.body;
+	if(!_.isBoolean(body.completed) || !_.isString(body.description) || body.description.trim())
+		{
+			return res.status(404).send();
+		}
     body.id =todoid;
     todoid ++;
     todos.push(body);
