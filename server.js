@@ -38,7 +38,7 @@ app.post('/todos',function(req,res){
     var body=req.body;
 	if(!_.isBoolean(body.completed) || !_.isString(body.description) || body.description.trim())
 		{
-			return res.status(404).send();
+			return res.status(404).send('server not respond');
 		}
     body.id =todoid;
     todoid ++;
